@@ -78,7 +78,7 @@ public class Player {
 		return MaxHitFactory.of(this);
 	}
 	
-	public static void main(String[] args) {
+	public static void test1() {
 		Player player = new Player();
 		player.setAttackStyle(AttackStyle.AGGRESSIVE);
 		player.setStrengthLevel(99);
@@ -86,6 +86,16 @@ public class Player {
 		player.setPrayer(Prayer.PIETY);
 		player.setHitpointsLevel(99);
 		player.setHitpoints(66);
-		System.out.println(player.getMaxHitFactory().applyBoost(SetEffect.DHAROK(1, 99)).applyBoost(Armour.SALVE_AMULET_ENCHANTED).getMaxHit());
+		System.out.println("Players max hit with dharok is: " + player.getMaxHitFactory().applyBoost(SetEffect.DHAROK(1, 99)).applyBoost(Armour.SALVE_AMULET_ENCHANTED).getMaxHit());
+	}
+	
+	public static void test2() {
+		int maxHit = new MaxHitFactory().setStrengthLevel(77).setAttackStyle(AttackStyle.AGGRESSIVE).setPrayer(Prayer.ULTIMATE_STRENGTH).setStrengthBonus(90).applyBoost(Armour.SALVE_AMULET).getMaxHit();
+		System.out.println("Players max hit with random is: " + maxHit);
+	}
+	
+	public static void main(String[] args) {
+		test1();
+		test2();
 	}
 }
